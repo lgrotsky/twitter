@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Users.find_or_create_by!(
+User.find_or_create_by!(
   first_name: "Lisa",
   last_name: "Grotsky",
   username: "lgrotsky",
