@@ -18,5 +18,8 @@ u = User.find_or_create_by!(
 u.tweets.destroy_all
 
 20.times do
-  u.tweets.create!(message: Faker::HarryPotter.quote)
+  u.tweets.create!(
+    message: Faker::HarryPotter.quote,
+    created_at: Faker::Date.between(2.months.ago, Time.now)
+    )
 end
