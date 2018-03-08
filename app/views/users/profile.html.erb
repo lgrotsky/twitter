@@ -4,6 +4,14 @@
 <p><%= @user.full_name %></p>
 <p><%= @user.location %></p>
 <p><%= @user.bio %></p>
+
+<%= unless @user.id == current_user.id %>
+  <%= if current_user.unfollowing.include?(@user.id.to_s) %>
+  <p><%= link_to "Unfollow", "X" %></p>
+  <% else %>
+  <p><%= link_to "Follow", follow_user_path(@user.id) %></p>
+  <% end %>
+<% end %>
 </div>
 
 <div class="right_side">
@@ -11,7 +19,7 @@
  <% @user.tweets.each do |tweet| %>
     <div class="tweet">
       <p><%= tweet.message %></p>
-      <p>Created: <%= time_ago_in_words(tweet.created_at) %> ago.</p>
+      <p class='tweet-date'>Created: <%= time_ago_in_words(tweet.created_at) %> ago.</p>
     </div>
  <% end %>
 </div>

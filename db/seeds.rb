@@ -6,20 +6,89 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u = User.find_or_create_by!(
-  first_name: "Lisa",
-  last_name: "Grotsky",
-  username: "lgrotsky",
-  bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  city: "Ashville",
-  state: "Ohio",
-)
+SOURCE = [ Faker::Seinfeld, Faker::StarWars, Faker::HarryPotter ]
 
-u.tweets.destroy_all
+def create_messages(u)
+  u.tweets.destroy_all
+  puts "Creating tweets"
+  20.times do
+    putc '.'
+    u.tweets.create!(
+      message: SOURCE.sample.quote,
+      created_at: Faker::Date.between(2.months.ago, Time.now)
+    )
+  end
+end
+
+
+User.destroy_all
+
+u = User.create!(
+    first_name: "Lisa",
+    last_name:  "Grotsky",
+    email: 'lisa.grotsky@gmail.com',
+    password: '123456',
+    password_confirmation: '123456',
+    username: "lisa.g",
+    bio: "Lorem ipsum dolnthor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    city: "Ashville",
+    state: "Ohio",
+  )
+
+
+create_messages(u)
 
 20.times do
-  u.tweets.create!(
-    message: Faker::HarryPotter.quote,
-    created_at: Faker::Date.between(2.months.ago, Time.now)
-    )
+
+  u = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: 'dont care',
+    password_confirmation: 'dont care',
+    username: Faker::Internet.user_name(5..10),
+    bio: Faker::Lorem.sentences(4).join(" "),
+    city: Faker::Address.city,
+    state: Faker::Address.state_abbr,
+  )
+
+  create_messages(u)
 end
+
+puts "done"
+
+
+# User.destroy_all
+#
+# u = User.create!(
+#   first_name: "Lisa",
+#   last_name:  "Grotsky",
+#   email: 'lisa.grotsky@gmail.com',
+#   password: '123456',
+#   password_confirmation: '123456',
+#   username: "lisa.g",
+#   bio: "Lorem ipsum dolnthor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+#   city: "Ashville",
+#   state: "Ohio",
+# )
+#
+# create_messages(u)
+#
+# 20.times do
+#
+#   u = User.create!(
+#     first_name: Faker::Name.first_name,
+#     last_name:  Faker::Name.last_name,
+#     email: Faker::Internet.email,
+#     password: 'dont care',
+#     password_confirmation: 'dont care',
+#     username: Faker::Internet.user_name(5..10),
+#     bio: Faker::Lorem.sentences(4),
+#     city: Faker::Address.city,
+#     state: Faker::Address.state_abbr,
+#   )
+#
+#   create_messages(u)
+# end
+#
+# puts "done"
