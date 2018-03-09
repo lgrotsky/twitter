@@ -71,24 +71,3 @@ puts "done"
 #   city: "Ashville",
 #   state: "Ohio",
 # )
-#
-# create_messages(u)
-#
-# 20.times do
-#
-#   u = User.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name:  Faker::Name.last_name,
-#     email: Faker::Internet.email,
-#     password: 'dont care',
-#     password_confirmation: 'dont care',
-#     username: Faker::Internet.user_name(5..10),
-#     bio: Faker::Lorem.sentences(4),
-#     city: Faker::Address.city,
-#     state: Faker::Address.state_abbr,
-#   )
-#
-#   create_messages(u)
-# end
-#
-# puts "done"

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 def profile
   @user = current_user
+  @tweets = Tweet.where(user_id: current_user.following.push(current_user))
 end
 
  def all
@@ -10,6 +11,7 @@ end
 
  def show
    @user = User.find(params['id'])
+   @tweets = @user.tweets
    render 'profile'
  end
 
@@ -17,8 +19,8 @@ end
       unless current_user.following.include?(params['id'])
       current_user.following.push(params['id'])
       current_user.save!
-    end
-      redirect_to user_path(params['id'])}}
+      end
+      redirect_to user_path(params['id'])
   end
 
 def unfollow
