@@ -14,5 +14,5 @@ class User < ApplicationRecord
     "#{city}, #{state}"
   end
 
-serialize :following, Array
+  serialize :following, Array
 end

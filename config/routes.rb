@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get "/follow/:id" => 'users#follow', as: :follow_user
   get "/unfollow/:id" => 'users#unfollow', as: :unfollow_user
 
+  get 'tweet/new' => 'tweets#new', as: :new_tweet
+  post 'tweet/create' => 'tweets#create', as: :tweets
 end

@@ -15,6 +15,7 @@
 </div>
 
 <div class="right_side">
+  <li><%= link_to "New Tweet", new_tweet_path %></li>
  <% @tweets.each do |tweet| %>
     <div class="tweet">
       <p>@<%= tweet.user.username %></p>
@@ -22,4 +23,5 @@
       <p class='tweet-date'>Created: <%= time_ago_in_words(tweet.created_at) %> ago.</p>
     </div>
  <% end %>
+
 </div>

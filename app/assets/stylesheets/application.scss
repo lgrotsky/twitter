@@ -3,12 +3,16 @@
 
 .container {
   width: 80%;
-  border: 3px solid blue;
+  border: 3px solid #1B4F72;
+  background-color: #D4E6F1
 }
+
+// #641E16
+
 .left_side {
   float: left;
   text-align: center;
-  width: 30%
+  width: 40%
 }
 
 .right_side {
@@ -17,35 +21,40 @@
 }
 
 .tweet {
-  border: 1px solid blue;
-  margin-bottom: 10px;
-  padding: 10px;
+  border: 1px dashed darkblue;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #85C1E9;
+  font-size: 12px;
 }
 
 .tweet-date {
-  font-size: 10px;
-  color: #cecbcb;
+  font-size: 8px;
+  color: #3498DB;
 }
+
+
 ul.navbar {
   overflow-x: hidden;
-  background-color: #3300CC;
+  background-color: #1B4F72;
   list-style-type: none;
   text-transform: uppercase;
+  min-height: 25px;
 }
 
 ul.navbar li a {
-  padding: 5px;
+  padding: 2px;
   text-decoration: none;
   color: #FFFFFF;
   text-transform:uppercase;
 }
 
 ul.navbar li a:hover {
-color: #3300CC;
+color: #1B4F72;
 background-color: #FFFFFF;
 }
 
 ul.navbar li {
-float: left;
-padding-right: 5px;
+  float: left;
+  padding-right: 5px;
 }
