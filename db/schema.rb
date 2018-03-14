@@ -12,7 +12,20 @@
 
 ActiveRecord::Schema.define(version: 20180308010816) do
 
-  create_table "tweets", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
+  t.string "name"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "tags", force: :cascade do |t|
+  t.integer "tweet_id"
+  t.integer "category_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "tweets", force: :cascade do |t|
     t.text "message"
     t.integer "user_id"
     t.datetime "created_at", null: false

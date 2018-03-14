@@ -52,22 +52,11 @@ create_messages(u)
     state: Faker::Address.state_abbr,
   )
 
-  create_messages(u)
-end
+    u.avatar = Rails.root.join("app/assets/images/stock-profile-#{iteration + 1}.jpeg").open
 
-puts "done"
+    create_messages(u)
 
+    u.save!
+  end
 
-# User.destroy_all
-#
-# u = User.create!(
-#   first_name: "Lisa",
-#   last_name:  "Grotsky",
-#   email: 'lisa.grotsky@gmail.com',
-#   password: '123456',
-#   password_confirmation: '123456',
-#   username: "lisa.g",
-#   bio: "Lorem ipsum dolnthor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-#   city: "Ashville",
-#   state: "Ohio",
-# )
+  puts "done"

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  
   root 'users#profile'
 
   get "users/profile" => "users#profile", as: :users_profile
@@ -10,6 +11,5 @@ Rails.application.routes.draw do
   get "/follow/:id" => 'users#follow', as: :follow_user
   get "/unfollow/:id" => 'users#unfollow', as: :unfollow_user
 
-  get 'tweet/new' => 'tweets#new', as: :new_tweet
-  post 'tweet/create' => 'tweets#create', as: :tweets
+  post "/tweets" => 'tweets#create', as: :tweets
 end
