@@ -2,7 +2,7 @@
   <% if @user.avatar.url.present? %>
     <%= image_tag @user.avatar.url, height: '100px' %>
   <% else %>
-    <%= image_tag "default_user.png", alt: "Default User Image", height: '100px' %>
+    <%= image_tag "default_user.jpg", alt: "Default User Image", height: '100px' %>
   <% end %>
   <p>@<%= @user.username %></p>
   <p><%= @user.full_name %></p>
